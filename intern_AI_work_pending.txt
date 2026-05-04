@@ -1,0 +1,96 @@
+Epic → Sprint → Tasks → Status Update
+
+Create Epic ✅
+Generate Sprints ✅
+Generate Tasks ✅
+View hierarchy ✅
+Update status ✅
+
+Do this:
+Disable “Generate” buttons if data exists
+Add loading states (spinner instead of plain text)
+Show error messages (not silent failures)
+
+Add empty states:
+
+"No tasks yet. Click Generate."
+
+👉 This is small effort, big impact
+
+🔹 3. Basic Data Integrity (Important)
+
+Before going live:
+
+Backend checks:
+Prevent duplicate Epic (you already did ✅)
+Prevent duplicate Sprint generation ✅
+Prevent duplicate WorkItems ✅
+Validate status values ✅
+
+👉 You’re already strong here — just verify all endpoints
+
+🔹 4. Simple Authentication (Phase 1 Lite)
+
+Don’t overcomplicate.
+
+Add:
+Session-based login (you already prefer this)
+Single role: Admin / User
+
+👉 Just protect:
+
+/api/*
+
+🔹 5. Deployment Setup
+Backend (.NET)
+Publish API
+Deploy on:
+IIS / Azure / VPS
+Frontend (Next.js)
+Build:
+npm run build
+npm start
+Deploy on:
+Vercel (fastest)
+or same server
+🔹 6. Environment Config
+.env.local
+NEXT_PUBLIC_API_BASE_URL=https://yourdomain/api
+
+👉 This is critical for production
+
+🔹 7. CORS (Don’t forget)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        p => p.WithOrigins("http://your-frontend-url")
+              .AllowAnyHeader()
+              .AllowAnyMethod());
+});
+🔹 8. Logging & Error Handling
+
+At least basic:
+
+Log AI response failures
+Log API errors
+Return meaningful messages (you already started doing this 👍)
+
+
+
+
+🗺️ Suggested Order (Do this exactly)
+Step 1
+
+Polish UI (1–2 days)
+
+Step 2
+
+Add basic auth (1 day)
+
+Step 3
+
+Deploy (1 day)
+
+Step 4
+
+Test with real users
